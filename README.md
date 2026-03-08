@@ -8,8 +8,6 @@ python -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 
-## Rodar testes smoke
-python -m unittest discover -s tests -v
 
 ## Iniciar PostgreSQL local
 docker compose up -d
@@ -19,3 +17,21 @@ docker compose down
 
 ## Parar e remover o volume do PostgreSQL local
 docker compose down -v
+
+## Rodar testes smoke
+python -m unittest discover -s tests -v
+
+
+
+## Ordem de execução:
+
+    1. Subir o banco de dados:
+    python src/ingest.py
+
+    2. Script de busca
+    python src/search.py
+
+    3. Rodar o chat:
+    python src/chat.py
+
+
